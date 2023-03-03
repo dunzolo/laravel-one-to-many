@@ -17,7 +17,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <form action="{{ route('admin.projects.update', $project->id)}}" method="POST">
+                        <form action="{{ route('admin.projects.update', $project->slug)}}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="mb-4 row">
@@ -30,6 +30,20 @@
                                 <label for="content" class="col-md-4 col-form-label text-md-right">Contenuto</label>
                                 <div class="col-md-6">
                                     <textarea class="form-control" rows="5" name="content" id="content" placeholder="Contenuto">{{ $project->content }}</textarea>
+                                </div>
+                            </div>
+                            <div class="mb-4 row">
+                                <label for="title" class="col-md-4 col-form-label text-md-right">Tipologia</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="type_id" id="type_id">
+                                        <option value="">Seleziona una categoria</option>
+                                        @foreach ($types as $type)
+                                            <option value="{{ $type->id }}" 
+                                                {{ $type->id == old('type_id', $project->type_id) ? 'selected' : ''}}>
+                                                {{ $type->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="mb-4 row mb-0">
