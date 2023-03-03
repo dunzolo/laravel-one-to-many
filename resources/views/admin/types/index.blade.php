@@ -3,13 +3,13 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12 my-5">
+            <div class="col-12 mt-5">
                 <div class="d-flex justify-content-between">
                     <div>
                         <h2>ELENCO DELLE CATEGORIE</h2>
                     </div>
                     <div>
-                        {{-- <a href="{{ route('admin.categories.create') }}" class="btn btn-sm btn-primary">Aggiungi</a> --}}
+                        <a href="{{ route('admin.types.create') }}" class="btn btn-sm btn-primary">Aggiungi</a>
                     </div>
                 </div>
                 <hr>
