@@ -6,6 +6,8 @@ use App\Models\Type;
 use App\Http\Controllers\Controller; //NON BISOGNA DIMENTICARLO!!
 use App\Http\Requests\StoreTypeRequest;
 use App\Http\Requests\UpdateTypeRequest;
+use Illuminate\Support\Str;
+
 
 class TypeController extends Controller
 {
@@ -16,7 +18,8 @@ class TypeController extends Controller
      */
     public function index()
     {
-        //
+        $types = Type::all();
+        return view('admin.types.index', compact('types'));
     }
 
     /**
@@ -48,7 +51,7 @@ class TypeController extends Controller
      */
     public function show(Type $type)
     {
-        //
+        return view('admin.types.show', compact('type'));
     }
 
     /**
@@ -59,7 +62,7 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        //
+        return view('admin.types.edit', compact('type'));
     }
 
     /**
@@ -71,7 +74,16 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        //
+        $form_data = $request->validated();
+
+        $slug = Str::slug($request->name, '-');
+
+        $form_data['slug'] = $slug;
+
+        //possso farlo perchè ho definito il fillable
+        $type->update($form_data);
+
+        return redirect()->route('admin.types.index')->with('message', 'Modifiche correttamente eseguite');
     }
 
     /**
