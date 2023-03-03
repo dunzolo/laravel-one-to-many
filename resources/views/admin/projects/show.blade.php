@@ -19,7 +19,7 @@
                 <label class="d-block"><strong>Descrizione</strong></label>
                 <p>{{ $project->content }}</p>
                 <label class="d-block"><strong>Tipologia</strong></label>
-                <p>{{ $project->category ? $project->type->name : 'Tipologia non definita' }}</p>
+                <p>{{ $project->type ? $project->type->name : 'Tipologia non definita' }}</p>
             </div>
         </div>
     </div>
