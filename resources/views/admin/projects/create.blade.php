@@ -31,6 +31,17 @@
                                     <textarea class="form-control" rows="5" name="content" id="content" placeholder="Contenuto"></textarea>
                                 </div>
                             </div>
+                            <div class="mb-4 row">
+                                <label for="type_id" class="col-md-4 col-form-label text-md-right">Tipologia</label>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="type_id" id="type_id">
+                                        <option value="">Seleziona una tipologia</option>
+                                        @foreach ($types as $type)
+                                            <option value="{{ $type->id }}">{{ $type->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="mb-4 row mb-0">
                                 <div>
                                     <a class="btn btn-sm btn-primary" href="{{ route('admin.projects.index') }}">Indietro</a>
